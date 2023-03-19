@@ -1,0 +1,254 @@
+﻿@model ADASSESSMENT.Models.TimeSlot
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>TimeSlot</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="BookedDate" class="control-label"></label>
+                <input asp-for="BookedDate" class="form-control" />
+                <span asp-validation-for="BookedDate" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="monSlot1" /> @Html.DisplayNameFor(model => model.monSlot1)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="monSlot2" /> @Html.DisplayNameFor(model => model.monSlot2)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="monSlot3" /> @Html.DisplayNameFor(model => model.monSlot3)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="tueSlot1" /> @Html.DisplayNameFor(model => model.tueSlot1)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="tueSlot2" /> @Html.DisplayNameFor(model => model.tueSlot2)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="tueSlot3" /> @Html.DisplayNameFor(model => model.tueSlot3)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="wedSlot1" /> @Html.DisplayNameFor(model => model.wedSlot1)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="wedSlot2" /> @Html.DisplayNameFor(model => model.wedSlot2)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="wedSlot3" /> @Html.DisplayNameFor(model => model.wedSlot3)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="thuSlot1" /> @Html.DisplayNameFor(model => model.thuSlot1)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="thuSlot2" /> @Html.DisplayNameFor(model => model.thuSlot2)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="thuSlot3" /> @Html.DisplayNameFor(model => model.thuSlot3)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="friSlot1" /> @Html.DisplayNameFor(model => model.friSlot1)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="friSlot2" /> @Html.DisplayNameFor(model => model.friSlot2)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="friSlot3" /> @Html.DisplayNameFor(model => model.friSlot3)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="satSlot1" /> @Html.DisplayNameFor(model => model.satSlot1)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="satSlot2" /> @Html.DisplayNameFor(model => model.satSlot2)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="satSlot3" /> @Html.DisplayNameFor(model => model.satSlot3)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="sunSlot1" /> @Html.DisplayNameFor(model => model.sunSlot1)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="sunSlot2" /> @Html.DisplayNameFor(model => model.sunSlot2)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="sunSlot3" /> @Html.DisplayNameFor(model => model.sunSlot3)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="monSlot1String" class="control-label"></label>
+                <input asp-for="monSlot1String" class="form-control" />
+                <span asp-validation-for="monSlot1String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="monSlot2String" class="control-label"></label>
+                <input asp-for="monSlot2String" class="form-control" />
+                <span asp-validation-for="monSlot2String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="monSlot3String" class="control-label"></label>
+                <input asp-for="monSlot3String" class="form-control" />
+                <span asp-validation-for="monSlot3String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tueSlot1String" class="control-label"></label>
+                <input asp-for="tueSlot1String" class="form-control" />
+                <span asp-validation-for="tueSlot1String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tueSlot2String" class="control-label"></label>
+                <input asp-for="tueSlot2String" class="form-control" />
+                <span asp-validation-for="tueSlot2String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="tueSlot3String" class="control-label"></label>
+                <input asp-for="tueSlot3String" class="form-control" />
+                <span asp-validation-for="tueSlot3String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="wedSlot1String" class="control-label"></label>
+                <input asp-for="wedSlot1String" class="form-control" />
+                <span asp-validation-for="wedSlot1String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="wedSlot2String" class="control-label"></label>
+                <input asp-for="wedSlot2String" class="form-control" />
+                <span asp-validation-for="wedSlot2String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="wedSlot3String" class="control-label"></label>
+                <input asp-for="wedSlot3String" class="form-control" />
+                <span asp-validation-for="wedSlot3String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="thuSlot1String" class="control-label"></label>
+                <input asp-for="thuSlot1String" class="form-control" />
+                <span asp-validation-for="thuSlot1String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="thuSlot2String" class="control-label"></label>
+                <input asp-for="thuSlot2String" class="form-control" />
+                <span asp-validation-for="thuSlot2String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="thuSlot3String" class="control-label"></label>
+                <input asp-for="thuSlot3String" class="form-control" />
+                <span asp-validation-for="thuSlot3String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="friSlot1String" class="control-label"></label>
+                <input asp-for="friSlot1String" class="form-control" />
+                <span asp-validation-for="friSlot1String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="friSlot2String" class="control-label"></label>
+                <input asp-for="friSlot2String" class="form-control" />
+                <span asp-validation-for="friSlot2String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="friSlot3String" class="control-label"></label>
+                <input asp-for="friSlot3String" class="form-control" />
+                <span asp-validation-for="friSlot3String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="satSlot1String" class="control-label"></label>
+                <input asp-for="satSlot1String" class="form-control" />
+                <span asp-validation-for="satSlot1String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="satSlot2String" class="control-label"></label>
+                <input asp-for="satSlot2String" class="form-control" />
+                <span asp-validation-for="satSlot2String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="satSlot3String" class="control-label"></label>
+                <input asp-for="satSlot3String" class="form-control" />
+                <span asp-validation-for="satSlot3String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sunSlot1String" class="control-label"></label>
+                <input asp-for="sunSlot1String" class="form-control" />
+                <span asp-validation-for="sunSlot1String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sunSlot2String" class="control-label"></label>
+                <input asp-for="sunSlot2String" class="form-control" />
+                <span asp-validation-for="sunSlot2String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="sunSlot3String" class="control-label"></label>
+                <input asp-for="sunSlot3String" class="form-control" />
+                <span asp-validation-for="sunSlot3String" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SlotBooked" class="control-label"></label>
+                <input asp-for="SlotBooked" class="form-control" />
+                <span asp-validation-for="SlotBooked" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EngineerId" class="control-label"></label>
+                <select asp-for="EngineerId" class="form-control" asp-items="ViewBag.EngineerId"></select>
+                <span asp-validation-for="EngineerId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

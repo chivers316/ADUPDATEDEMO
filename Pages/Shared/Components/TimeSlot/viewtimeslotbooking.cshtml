@@ -1,0 +1,55 @@
+﻿@model ADASSESSMENT.Models.TimeSlot
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto auto auto auto;
+        background-color: #2196F3;
+        padding: 10px;
+    }
+
+    .grid-item {
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 20px;
+        font-size: 30px;
+        text-align: center;
+    }
+</style>
+
+<h1>Time Slot Booking</h1>
+
+<div class="grid-container">
+    <div class="grid-item">           </div>    <div class="grid-item">Mon </div>                                          <div class="grid-item">Tue</div>                                            <div class="grid-item">Wed</div>                                             <div class="grid-item">Thu</div>                                            <div class="grid-item">Fri</div>                                                                            <div class="grid-item">Sat</div>    <div class="grid-item">Sun</div>
+    <div class="grid-item">           </div>    <div class="grid-item"><input type="text" name="frmDateReg" required id="frmDate0" value="" style="width:80px; font-size: medium; text-align:center"></div>                                          <div class="grid-item"><input type="text" name="frmDateReg" required id="frmDate1" value="" style="width:80px; font-size: medium; text-align:center"></div>                                            <div class="grid-item"><input type="text" name="frmDateReg" required id="frmDate2" value="" style="width:80px; font-size: medium; text-align:center"></div>                                             <div class="grid-item"><input type="text" name="frmDateReg" required id="frmDate3" value="" style="width:80px; font-size: medium; text-align:center"></div>                                            <div class="grid-item"><input type="text" name="frmDateReg" required id="frmDate4" value="" style="width:80px; font-size: medium; text-align:center"></div>                                                                            <div class="grid-item"><input type="text" name="frmDateReg" required id="frmDate5" value="" style="width:80px; font-size: medium; text-align:center"></div>    <div class="grid-item"><input type="text" name="frmDateReg" required id="frmDate6" value="" style="width:80px; font-size: medium; text-align:center"></div> 
+
+    <div class="grid-item">08:00-10:00</div>    <div class="grid-item">@Html.CheckBoxFor(model => model.monSlot1)</div>   <div class="grid-item">                                          </div>    <div class="grid-item">@Html.CheckBoxFor(model => model.wedSlot1)</div>       <div class="grid-item">                                                                            </div>   <div class="grid-item">@Html.CheckBoxFor(model => model.friSlot1)</div>     <div class="grid-item">   </div>   <div class="grid-item">     </div>
+    <div class="grid-item">11:00-13:00</div>    <div class="grid-item">@Html.CheckBoxFor(model => model.monSlot2)</div>   <div class="grid-item">                                          </div>    <div class="grid-item">@Html.CheckBoxFor(model => model.wedSlot2)</div>       <div class="grid-item">                                                                            </div>   <div class="grid-item">@Html.CheckBoxFor(model => model.friSlot2)</div>     <div class="grid-item">   </div>   <div class="grid-item">     </div>
+    <div class="grid-item">14:00-16:00</div>    <div class="grid-item">@Html.CheckBoxFor(model => model.monSlot3)</div>   <div class="grid-item">                                          </div>    <div class="grid-item">@Html.CheckBoxFor(model => model.wedSlot3)</div>       <div class="grid-item">                                                                            </div>   <div class="grid-item">                                          </div>     <div class="grid-item">   </div>   <div class="grid-item">     </div>
+    <div class="grid-item">09:00-11:00</div>    <div class="grid-item">                                          </div>   <div class="grid-item">@Html.CheckBoxFor(model => model.tueSlot1)</div>    <div class="grid-item">                                          </div>       <div class="grid-item">@Html.CheckBoxFor(model => model.thuSlot1)</div>     <div class="grid-item">                                                                          </div>     <div class="grid-item">   </div>   <div class="grid-item">     </div>
+    <div class="grid-item">12:00-14:00</div>    <div class="grid-item">                                          </div>   <div class="grid-item">@Html.CheckBoxFor(model => model.tueSlot2)</div>    <div class="grid-item">                                          </div>       <div class="grid-item">@Html.CheckBoxFor(model => model.thuSlot2)</div>     <div class="grid-item">                                                                          </div>     <div class="grid-item">   </div>   <div class="grid-item">     </div>
+    <div class="grid-item">15:00-17:00</div>    <div class="grid-item">                                          </div>   <div class="grid-item">@Html.CheckBoxFor(model => model.tueSlot3)</div>    <div class="grid-item">                                          </div>       <div class="grid-item">@Html.CheckBoxFor(model => model.thuSlot3)</div>     <div class="grid-item">                                                                          </div>     <div class="grid-item">   </div>   <div class="grid-item">     </div>
+</div>
+
+<script>
+
+    function getDate() {
+
+        for (let i = 0; i < 7; i++) {
+        var todaydate = new Date();
+        var day = (todaydate.getDate() + 1 + i);
+        var month = todaydate.getMonth() + 1;
+        var year = todaydate.getFullYear();
+        var datestring = day + "/" + month + "/" + year;
+        
+        
+                document.getElementById("frmDate" + i).value = datestring;
+        }
+    }
+    getDate();
+
+</script>

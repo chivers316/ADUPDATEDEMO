@@ -1,0 +1,83 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.container-fluid-w1000 {
+    position: relative;
+    max-width: 1000px;
+}
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+
+/*details-control*/
+td.details-control {
+    background: url('/Images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+/*td.details-control2 {
+  background: url('../images/details_open.png') no-repeat center center;
+  cursor: pointer;
+}*/
+
+
+td.currency {
+    background: url('/Images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+tr.shown td.details-control {
+    background: url('/Images/details_close.png') no-repeat center center;
+}
+
+tr.shown td.details-control2 {
+    background: url('/Images/details_close.png') no-repeat center center;
+}
+
+td.colouropen {
+    background: url('/Images/details_open.png') no-repeat center center;
+    cursor: pointer;
+}
+
+td.colourclosed {
+    background: url('/Images/details_close.png') no-repeat center center;
+}
+
+.dtcol-1 {
+    width: 10px;
+}
+
+.dtcol-2 {
+    min-width: 30px;
+}
+
+.dtcol-3 {
+    min-width: 125px;
+}
+
+
+tabledt {
+    margin: 0 auto;
+    width: 100%;
+    clear: both;
+    border-collapse: collapse;
+    table-layout: fixed;
+    word-wrap: break-word;
+}

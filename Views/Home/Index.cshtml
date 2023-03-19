@@ -1,0 +1,324 @@
+﻿@{
+    ViewData["Title"] = "AD Web Demo";
+}
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@addTagHelper *, AuthoringTagHelpers
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type='text/css'>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet" type='text/css'/>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Create four equal columns that floats next to each other */
+        .topcolumn {
+            float: left;
+            width: 25%;
+            padding: 10px;
+            height: 275px; /* Should be removed. Only for demonstration */
+            align-content: center;
+        }
+
+        /* Clear floats after the columns */
+        .toprow:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>AD Web Application Demo</h2>
+
+    <div class="toprow">
+        <div class="topcolumn" style="background-color:#aaa; vertical-align: auto; glyph-orientation-horizontal:inherit;">
+            <img src="/Images/coach1.jpg" alt="AD Enviro 200" width="250" height="250">
+        </div>
+        <div class="topcolumn" style="background-color:#bbb; vertical-align: auto; glyph-orientation-horizontal:inherit;">
+            <img src="/Images/coach2.jpg" alt="AD Enviro 400" width="250" height="250">
+        </div>
+        <div class="topcolumn" style="background-color:#ccc; vertical-align: auto; glyph-orientation-horizontal:inherit;">
+            <img src="/Images/coach3.jpg" alt="Vinatge Dennis Coach" width="250" height="250">
+        </div>
+        <div class="topcolumn" style="background-color:#ddd; vertical-align: auto; glyph-orientation-horizontal:inherit;">
+            <img src="/Images/coach4.jpg" alt="AD Electric Range" width="250" height="250">
+        </div>
+    </div>
+
+    <br />
+
+    <div class="slider">
+        <div class="col-sm">
+            <div class="form-group">
+                <div id="HeaderEngineerLookup" class="pb-2 pl-0">
+                    <div style="border-color:dimgrey;border-style:solid;border-width:thin" class="shadow">
+                        <div id="UnloadedSlideEngineerLookup" class="headerengineerlookup" style="cursor:pointer;background-color:#f9fdfd">
+                            <span><label class="mt-2 ml-2">Engineer Lookup</label><i id="updownunloadedengineerlookup" class="fa fa-chevron-down mr-1 small mt-2" aria-hidden="true" style="float:right;text-align:center;vertical-align:bottom"></i></span>
+                        </div>
+                        <div id="GetEngineerLookup" class="content mt-1 mr-1" style="display:none">
+                            <div class="pl-1">
+                                <br />
+                                <div id="EngineerLookup" class="form-group pb-2">
+                                    @*@await Component.InvokeAsync("", new { Typeof = "" })*@
+                                </div>
+                                <br />
+                                <div id="loadingelu" class="container pb-2" style="display:none">
+
+                                    <div class="spinner-border text-info"></div>
+                                    <span class="visually-hidden">Loading SQL Lite data...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="form-group">
+                <div id="HeaderAddressLookup" class="pb-2 pl-0">
+                    <div style="border-color:dimgrey;border-style:solid;border-width:thin" class="shadow">
+                        <div id="UnloadedSlideAddressLookup" class="headeraddresslookup" style="cursor:pointer;background-color:#f9fdfd">
+                            <span><label class="mt-2 ml-2">Address Lookup</label><i id="updownunloadedaddresslookup" class="fa fa-chevron-down mr-1 small mt-2" aria-hidden="true" style="float:right;text-align:center;vertical-align:bottom"></i></span>
+                        </div>
+                        <div id="GetAddressLookup" class="content mt-1 mr-1" style="display:none">
+                            <div class="pl-1">
+                                <div id="AddressLookup" class="form-group pb-2">
+                                    @*@await Component.InvokeAsync("", new { Typeof = "" })*@
+                                </div>
+                                <div id="loadingalk" class="container pb-2" style="display:none">
+
+                                    <div class="spinner-border text-info"></div>
+                                    <span class="visually-hidden">Loading SQL Lite data...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm">
+            <div class="form-group">
+                <div id="HeaderTimeSlotBooking" class="pb-2 pl-0">
+                    <div style="border-color:dimgrey;border-style:solid;border-width:thin" class="shadow">
+                        <div id="UnloadedSlideTimeSlotBooking" class="headertimeslotbooking" style="cursor:pointer;background-color:#f9fdfd">
+                            <span><label class="mt-2 ml-2">Time Slot Booking</label><i id="updownunloadedtimeslotbooking" class="fa fa-chevron-down mr-1 small mt-2" aria-hidden="true" style="float:right;text-align:center;vertical-align:bottom"></i></span>
+                        </div>
+                        <div id="GetTimeSlotBooking" class="content mt-1 mr-1" style="display:none">
+                            <div class="pl-1">
+                                <div id="TimeSlotBooking" class="form-group pb-2">
+                                    @*@await Component.InvokeAsync("", new { Typeof = "" })*@
+                                </div>
+                                <div id="loadingtsb" class="container pb-2" style="display:none">
+
+                                    <div class="spinner-border text-info"></div>
+                                    <span class="visually-hidden">Loading SQL Lite data...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<footer class="border-top footer text-muted top-50">
+    <div class="container">
+        &copy; 2023 - ADASSESSMENT - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    </div>
+</footer>
+
+</html>
+
+
+<script>
+
+    $(document).ready(function () {
+
+        $(".headerengineerlookup").click(function () {
+
+            $header = $(this);
+            var currelem = this.id;
+            var upd = "";
+            switch (currelem) {
+                case 'UnloadedSlideEngineerLookup':
+                    upd = "updownunloadedengineerlookup"
+                    break;
+            }
+
+            //getting the next element
+            $content = $header.next();
+            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            $content.slideToggle(500, function () {
+                //execute this after slideToggle is done
+                //change text of header based on visibility of content div
+                $header.text(function () {
+                    //change text based on condition
+                    if ($content.is(":visible")) {
+
+                        document.getElementById("loadingelu").style.display = "block";
+
+                        GetEngineerLookup();
+
+                        var element = document.getElementById(upd);
+                        element.classList.remove("fa-chevron-down");
+                        element.classList.add("fa-chevron-up");
+                    }
+                    else {
+                        var element = document.getElementById(upd);
+                        element.classList.remove("fa-chevron-up");
+                        element.classList.add("fa-chevron-down");
+                    }
+                });
+            });
+
+        });
+
+        $(".headeraddresslookup").click(function () {
+
+            $header = $(this);
+            var currelem = this.id;
+            var upd = "";
+            switch (currelem) {
+                case 'UnloadedSlideAddressLookup':
+                    upd = "updownunloadedaddresslookup"
+                    break;
+            }
+
+            //getting the next element
+            $content = $header.next();
+            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            $content.slideToggle(500, function () {
+                //execute this after slideToggle is done
+                //change text of header based on visibility of content div
+                $header.text(function () {
+                    //change text based on condition
+                    if ($content.is(":visible")) {
+
+                        document.getElementById("loadingalk").style.display = "block";
+
+                        GetAddressLookup();
+
+                        var element = document.getElementById(upd);
+                        element.classList.remove("fa-chevron-down");
+                        element.classList.add("fa-chevron-up");
+                    }
+                    else {
+                        var element = document.getElementById(upd);
+                        element.classList.remove("fa-chevron-up");
+                        element.classList.add("fa-chevron-down");
+                    }
+                });
+            });
+
+        });
+   
+
+        $(".headertimeslotbooking").click(function () {
+
+            $header = $(this);
+            var currelem = this.id;
+            var upd = "";
+            switch (currelem) {
+                case 'UnloadedSlideTimeSlotBooking':
+                    upd = "updownunloadedtimeslotbooking"
+                    break;
+            }
+
+            //getting the next element
+            $content = $header.next();
+            //open up the content needed - toggle the slide- if visible, slide up, if not slidedown.
+            $content.slideToggle(500, function () {
+                //execute this after slideToggle is done
+                //change text of header based on visibility of content div
+                $header.text(function () {
+                    //change text based on condition
+                    if ($content.is(":visible")) {
+
+                        document.getElementById("loadingtsb").style.display = "block";
+
+                        GetTimeSlotBooking();
+
+                        var element = document.getElementById(upd);
+                        element.classList.remove("fa-chevron-down");
+                        element.classList.add("fa-chevron-up");
+                    }
+                    else {
+                        var element = document.getElementById(upd);
+                        element.classList.remove("fa-chevron-up");
+                        element.classList.add("fa-chevron-down");
+                    }
+                });
+            });
+
+        });
+    });
+
+    function GetEngineerLookup() {
+
+        $.ajax({
+            type: "Get",
+            url: '@Url.Action("Index", "Engineers")',
+            data: {
+
+            },
+            success: function (data) {
+
+                $('#EngineerLookup').html(data);
+                document.getElementById("loadingelu").style.display = "none";
+            }
+        });
+    };
+
+    function GetAddressLookup() {
+
+        $.ajax({
+            type: "Get",
+            url: '@Url.Action("Index", "Addresses")',
+            data: {
+
+            },
+            success: function (data) {
+
+                $('#AddressLookup').html(data);
+                document.getElementById("loadingalk").style.display = "none";
+            }
+        });
+    };
+
+    function GetTimeSlotBooking() {
+
+        $.ajax({
+            type: "Get",
+            url: '@Url.Action("GetViewTimeSlots", "TimeSlots")',
+            data: {
+
+            },
+            success: function (data) {
+
+                $('#TimeSlotBooking').html(data);
+                document.getElementById("loadingtsb").style.display = "none";
+            }
+        });
+    };
+
+
+
+</script>
+
+
+
