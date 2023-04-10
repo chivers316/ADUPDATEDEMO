@@ -1,7 +1,7 @@
-﻿using ADASSESSMENT.Models;
+﻿using StringCounterDemo.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace ADASSESSMENT.Data
+namespace StringCounterDemo.Data
 {
     public class DataContext : DbContext
     {
@@ -9,10 +9,8 @@ namespace ADASSESSMENT.Data
         {
         }
 
-        public DbSet<Engineer> Engineers => Set<Engineer>();
-        public DbSet<Address> Addresses => Set<Address>();
-        public DbSet<TimeSlot> TimeSlots => Set<TimeSlot>();
-        public DbSet<JobCategory> JobCategories => Set<JobCategory>();
+        public DbSet<Strings> strings => Set<Strings>();
+        public DbSet<StringsInfo> stringsInfos => Set<StringsInfo>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

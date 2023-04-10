@@ -1,8 +1,8 @@
-﻿using ADASSESSMENT.Models;
+﻿using StringCounterDemo.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace ADASSESSMENT.Controllers
+namespace StringCounterDemo.Controllers
 {
     public class HomeController : Controller
     {

@@ -1,0 +1,47 @@
+﻿@model StringCounterDemo.Models.Strings
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Strings</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.InputString)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.InputString)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.OutputString)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.OutputString)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <a asp-area="" asp-controller="Home" asp-action="Index">Back to List</a>
+</div>
+
+<br />
+<br />
+
+<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+    <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+    </ul>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

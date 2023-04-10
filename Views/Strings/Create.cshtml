@@ -1,0 +1,49 @@
+﻿@model StringCounterDemo.Models.Strings
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Strings</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="InputString" class="control-label"></label>
+                <input asp-for="InputString" class="form-control" />
+                <span asp-validation-for="InputString" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OutputString" class="control-label"></label>
+                <input asp-for="OutputString" class="form-control" />
+                <span asp-validation-for="OutputString" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-area="" asp-controller="Home" asp-action="Index">Back to List</a>
+</div>
+
+<br/>
+<br/>
+
+<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+    <ul class="navbar-nav flex-grow-1">
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+        </li>
+    </ul>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

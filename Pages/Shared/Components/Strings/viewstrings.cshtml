@@ -1,0 +1,220 @@
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@model IEnumerable<StringCounterDemo.Models.Strings>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+
+<style>
+	.nfade {
+		display: none;
+	}
+
+
+	.engineerlookup td {
+		padding-top: .5em;
+		padding-bottom: .5em;
+	}
+
+</style>
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="form-group">
+			<label asp-for="@Model.First().InputString" class="control-label">Enter A String:</label>
+			<input id="InputString" value="" class="form-control" onchange="CheckString()" />
+		</div>
+		<div class="form-group">
+			<label id="OutputString" value="" asp-class="control-label"></label>
+		</div>
+	</div>
+</div>
+
+<div class="slider">
+	<table id="stringcounterlookup" class="stringcounterlookup" style="width: 100%; border-spacing:0 2px">
+		<thead>
+			<tr style="background-color:Gainsboro;">
+				<th style="border-radius: 10px 0 0 10px"></th>
+				<th>Input String</th>
+				<th>Output String</th>
+				<th style="border-radius: 0 10px 10px 0"></th>
+				<th style="display:none" class="pl-2">String Id</th>
+			</tr>
+		</thead>
+		<tbody>
+			@{
+				foreach (var mod in Model)
+				{
+					<tr style="background-color:#cce6ff">
+						<td class="strdc" style="border-radius:  10px 0 0 10px"></td>
+						<td>@mod.InputString</td>
+						<td>@mod.OutputString</td>
+						<td style="border-radius:  0 10px 10px 0">
+							<a asp-controller="Strings" asp-action="Edit" asp-route-id="@mod.Id">Edit</a> |
+							<a asp-controller="Strings" asp-action="Details" asp-route-id="@mod.Id">Details</a> |
+							<a asp-controller="Strings" asp-action="Delete" asp-route-id="@mod.Id">Delete</a>
+						</td>
+						<td style="display:none" value="">@mod.Id</td>
+					</tr>
+				}
+			}
+		</tbody>
+	</table>
+</div>
+
+<br />
+<br />
+
+<div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+	<ul class="navbar-nav flex-grow-1">
+		<li id="escape" class="nav-item" style="display:none">
+			<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Refresh</a>
+		</li>
+	</ul>
+</div>
+
+<script>
+
+	var str_table = null;
+	var Id = 0;
+
+	//Gets the table from the database.
+	
+	$(document).ready(function () {
+
+		defaultSort = [[0, "asc"]];
+
+		str_table = $('#stringcounterlookup').DataTable({
+			"dom": 'Bfrtip',
+			"pageLength": 25,
+			"columns": [
+				{
+					"class": 'details-control',
+					"orderable": false,
+					"defaultContent": ''
+				},
+				{ "data": "Input String" },
+				{ "data": "Output String" },
+				{ },
+				{ "data": "String Id" }
+			],
+			"order": defaultSort,
+			"language": {
+				"emptyTable": "No string information available"
+			},
+			"buttons": [
+				{
+					extend: 'excel',
+					exportOptions: {
+						columns: [1,2]
+
+
+					},
+					title: function () { return 'String Counter Demo (String Details)' },
+				}
+			],
+
+		});
+		$('.nfade').fadeIn(500);
+
+		//Partial Completed Detatls view was supposed to show a break down of the String....
+
+		$('#stringcounterlookup tbody').on('click', 'td.strdc', function () {
+
+			var tr = $(this).closest('tr');
+			var row = str_table.row(tr);
+
+			var td = $(this).next('td');
+			var data = row.data();
+
+			Id = data["String Id"];
+
+			if (row.child.isShown()) {
+				row.child.hide();
+				tr.css('background-color', '#cce6ff');
+				tr.removeClass('shown boxentry');
+			}
+			else {
+				str_table.rows().every(function () {
+					// If row has details expanded
+					if (this.child.isShown()) {
+						// Collapse row details
+						this.child.hide();
+						$(this.node()).removeClass('shown boxentry');
+						$(this.node()).css('background-color', '#cce6ff');
+					}
+				});
+				// Open this row
+				row.child('<p><center>Loading...</center></p>', 'no-padding').show();
+				tr.addClass('shown boxentry');
+				tr.css('background-color', '#FFFAA0');
+				$('div.slider', row.child()).slideDown();
+
+				$.ajax({
+					type: "Get",
+					url: '@Url.Action("GetViewStringDetails", "Strings")',
+					data: {
+
+						id: Id
+					},
+					success: function (data) {
+
+						$('td', row.child()).html(data);
+						$('div.slider', row.child()).show();
+					}
+				});
+			}
+		});
+	});
+
+	function CheckString() {
+
+		//Get Occurance of Char from the string
+
+		var jsonObj = Char_Count($('#InputString').val());
+
+		var strBuilder = [];
+		for (key in jsonObj) {
+			if (jsonObj.hasOwnProperty(key)) {
+				strBuilder.push(key + jsonObj[key]);
+			}
+		}
+
+		//Update the Output Label
+
+		$('#OutputString').html(strBuilder.join(""));
+
+		//Add String and result to Database
+
+		$('#stringcounterlookup').html("");
+
+		$.ajax({
+			type: "POST",
+			url: '@Url.Action("UpdateString", "Strings")',
+			data: {
+				input: $('#InputString').val(),
+				output: strBuilder.join("")
+			},
+			success: function (data) {
+
+				$.ajax({
+					type: "GET",
+					url: '@Url.Action("GetViewStrings", "Strings")',
+					data: {
+					},
+					success: function (data) {
+						document.getElementById("escape").style.display = "block";
+					}
+				});
+			}
+		});
+	};
+
+
+	function Char_Count(str1) {
+		var chars = {};
+		str1.replace(/\S/g, function (l) { chars[l] = (isNaN(chars[l]) ? 1 : chars[l] + 1); });
+		return chars;
+	}
+
+
+</script>

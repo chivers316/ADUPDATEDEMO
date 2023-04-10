@@ -1,4 +1,4 @@
-namespace ADASSESSMENT.Models
+namespace StringCounterDemo.Models
 {
     public class ErrorViewModel
     {

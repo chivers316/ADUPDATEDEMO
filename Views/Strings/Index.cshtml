@@ -6,11 +6,11 @@
 @addTagHelper *, AuthoringTagHelpers
 
 <div class="row">
-  <div class="col-md-12">
-     <div id="ViewContainers" class="col-md-12">
-        @await Component.InvokeAsync("Engineer", new { Typeof = "viewengineer" })
-      </div>
-  </div>
+    <div class="col-md-12">
+        <div id="ViewContainers" class="col-md-12">
+            @await Component.InvokeAsync("Strings", new { Typeof = "viewstrings" })
+        </div>
+    </div>
 </div>
 
 <script>

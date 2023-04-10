@@ -1,4 +1,5 @@
-using ADASSESSMENT.Data;
+global using StringCounterDemo.Models;
+using StringCounterDemo.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 

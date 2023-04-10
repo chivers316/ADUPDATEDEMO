@@ -8,7 +8,7 @@
     }
   },
   "profiles": {
-    "ADASSESSMENT": {
+    "StringCounterDemo": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
